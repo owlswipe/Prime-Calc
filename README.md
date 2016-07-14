@@ -2,7 +2,7 @@
 Prime Calc is a smarter calculator app for iOS devices.
 
 ## The Calculator
-The calculator in Prime Calc is easier to use than other calculators, with automatic decimal-to-fraction conversion (so you'll know that 0.07692307692 is equal to 1/13), tap-to-undo (never fear tapping the wrong button again, just go back one button press), a fully-viewable stack (so you can see exactly what you just calculated, and make sure it's mistake-free), and really big buttons, so your finger hits what you want it to hit.
+The calculator in Prime Calc is easier to use than other calculators, with <b>automatic decimal-to-fraction conversion</b> (so you'll know that 0.07692307692 is equal to 1/13), <b>tap-to-undo</b> (never fear tapping the wrong button again, just go back one button press), <b>a fully-viewable stack</b> (so you can see exactly what you just calculated, and make sure it's mistake-free), and <b>really big buttons</b>, so your finger hits what you want it to hit.
 
 ## The Today Widget
 With a single swipe down from the top of your screen you will find Prime Calc's today widget, where you can easily calculate without unlocking your iPhone/iPad and without leaving the app you are in.
