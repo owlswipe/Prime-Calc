@@ -23,3 +23,4 @@ Instantly find out if a number is prime, and find out all of its factors.
 Type in two numbers and you can compare them, and find their GCD and LCM.
 
 # <a href="https://itunes.apple.com/us/app/prime-calc-better-calculator/id1120973834">Download Prime Calc.</a>
+
