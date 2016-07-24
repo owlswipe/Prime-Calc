@@ -1,26 +1,16 @@
 //
-//  ViewController7.swift
-//  Is It Prime copy
+//  FractionCalculator.swift
+//  Prime Calc
 //
-//  Created by Henry Stern on 2/12/16.
-//  Copyright © 2016 The Math Guys. All rights reserved.
-//
-
-// fraction calculator!
-
+//  Created by Henry Stern on 12/17/15.
+//  Copyright © 2016 One Studio. All rights reserved.
 
 import UIKit
 
-struct timers {
-    
-    var numbers = NSTimer()
-    var sendto = "10005"
-}
-var v = timers()
 
 class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     
-    func checkwidth() { // this function runs with the timer lp.widthtimer to check the width and make a couple of changes for split view
+    func checkwidth() { // this function runs with the timer widthtimer to check the width and make a couple of changes for split view
         
         
         let width = UIScreen.mainScreen().applicationFrame.size.width
@@ -67,7 +57,7 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
     
     
     func leastCommonMultiple(a: Int, b: Int) -> Int {
-        if lp.numbercopy != 0 && lp.numbercopy2 != 0 {
+        if numbercopy != 0 && numbercopy2 != 0 {
             return a * (b / greatestCommonDenominator(a, b: b))
         } else {
             return 0
@@ -113,62 +103,26 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
 
     }
 
-    @IBOutlet weak var decresut: UILabel!
-    @IBOutlet weak var numresult: UILabel!
-    @IBOutlet weak var denresult: UILabel!
-    @IBOutlet weak var operatingerror: UILabel!
-    @IBOutlet weak var error: UILabel!
-    @IBOutlet weak var num1: UITextView!
-    @IBOutlet weak var den1: UITextView!
-    @IBOutlet weak var num2: UITextView!
-    @IBOutlet weak var den2: UITextView!
-    @IBOutlet weak var control1: UISegmentedControl!
+    @IBOutlet weak var decresut: UILabel! // the decimal result of the fraction calculation
+    @IBOutlet weak var numresult: UILabel! // the numerator of the result
+    @IBOutlet weak var denresult: UILabel! // the denominator of the result
+    @IBOutlet weak var operatingerror: UILabel! // a small label above the +/-/*/÷ chooser that warns if the user doesn't choose any of them.
+    @IBOutlet weak var error: UILabel! // a label anywhere that reports to the user what they do wrong (in case a denominator is zero or something like that)
+    @IBOutlet weak var num1: UITextView! // the field where the user enters the first fraction's numerator
+    @IBOutlet weak var den1: UITextView! // the field where the user enters the first fraction's denominator
+    @IBOutlet weak var num2: UITextView! // the field where the user enters the second fraction's numerator
+    @IBOutlet weak var den2: UITextView! the field where the user enters the second fraction's denominator
+    @IBOutlet weak var control1: UISegmentedControl! // the segmentedcontrol where the user selects plus, minus, times, or divided
     
     override func viewDidAppear(animated: Bool) {
         
-        lp.widthtimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(ViewController7.checkwidth), userInfo: nil, repeats: true) // runs every hundredth of a second to check the width of the window in coordination with the checkwidth function
-        
-        
-        if let isFirstRun = NSUserDefaults.standardUserDefaults().stringForKey("iSFirstRun") {
-            print("found iSFirstRun string key.")
-            
-            if isFirstRun == "just fraction left" { // user hasn't been in fraction calculator before.
-                print("is First Run is just fraction left!")
-            
-                
-                let refreshAlert = UIAlertController(title: "Welcome to the fraction calculator", message: "Type in one fraction (under \"fraction 1\"), press +, -, x, or ÷, and then enter in the second fraction, under \"fraction 2\". We'll calculate the result instantly.", preferredStyle: UIAlertControllerStyle.Alert)
-                
-                refreshAlert.addAction(UIAlertAction(title: "OK, exit tutorial.", style: .Default, handler: { (action: UIAlertAction!) in
-                    print("they got the fraction calculator tutorial alert.")
-                    
-                }))
-                presentViewController(refreshAlert, animated: true, completion: nil)
-                
-                
-                // then update userDefaults to make sure we never have this intro sequence again.
-                NSUserDefaults.standardUserDefaults().setValue("yes", forKey: "iSFirstRun")
-                
-                
-                
-                
-            } else { // user has already been to the fraction calcy
-                let width = UIScreen.mainScreen().applicationFrame.size.width
-                if width < 507 {
-                    fraction1.hidden = true
-                    fraction2.hidden = true
-                    selectedoperator.hidden = true
-                }
-            }
-            
-        }
+        widthtimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(ViewController7.checkwidth), userInfo: nil, repeats: true) // runs every hundredth of a second to check the width of the window in coordination with the checkwidth function
 
-        
-        
-        
     }
     
     override func viewDidDisappear(animated: Bool) {
-        lp.widthtimer.invalidate()
+        widthtimer.invalidate()
+        numbers.invalidate()
     }
 
     
@@ -420,19 +374,8 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
             }
     }
 
-    @IBAction func sendtodec(sender: AnyObject) { // enables the send to calcy function.
         
-        if numresult.text != "" { // makes sure there is something to send to calcy.
-            
-            v.sendto = "\(numresult.text!)/\(denresult.text!)"
-            performSegueWithIdentifier("fracsegue", sender: self)
-            
-        }
-        
-        
-    }
-        
-    @IBAction func clear(sender: AnyObject) { // CLEAR EVERYTHING
+    @IBAction func clear(sender: AnyObject) { // CLEAR EVERYTHING BUTTON
         
         numresult.text = ""
         denresult.text = ""
@@ -485,14 +428,7 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
         
         if let isFirstRun = NSUserDefaults.standardUserDefaults().stringForKey("iSFirstRun") {
             
-            if isFirstRun != "just fraction left" {
                 let width = UIScreen.mainScreen().applicationFrame.size.width
-                print("me, down here!")
-                print(width)
-                print(width)
-                print(width)
-                print(width)
-                print(width)
                 
                 
                 if width < 507 {
@@ -502,7 +438,6 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
                 
             }
             }
-        }
         
         let width = UIScreen.mainScreen().applicationFrame.size.width
         
@@ -531,10 +466,6 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
         let attr = NSDictionary(object: UIFont(name: "Avenir-Roman", size: 18.0)!, forKey: NSFontAttributeName)
         UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
         
-        lp.vccalc = false
-        lp.vccompare = false
-        lp.vcprime = false
-        lp.vcfraccalc = true
         
         num1.clearsOnInsertion = true
         num2.clearsOnInsertion = true
@@ -545,7 +476,7 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
         num2.delegate = self;
         den1.delegate = self;
         den2.delegate = self;
-        v.numbers = NSTimer.scheduledTimerWithTimeInterval(0.0001, target: self, selector: #selector(ViewController7.countdown), userInfo: nil, repeats: true) // checks every ten-thousandth of a second whether you've pressed the return key.
+        var numbers = NSTimer.scheduledTimerWithTimeInterval(0.0001, target: self, selector: #selector(ViewController7.countdown), userInfo: nil, repeats: true) // checks every ten-thousandth of a second whether you've pressed the return key.
         
     }
     
@@ -571,12 +502,8 @@ class ViewController7: UIViewController, UITextViewDelegate, UITextFieldDelegate
         
     ]
     
-    override var keyCommands: [UIKeyCommand]? {
-        if lp.vcfraccalc == true {
+    override var keyCommands: [UIKeyCommand]? { // you might want to make it so this only returns globalKeyCommands on your Fraction Calculator view controller if you have other view controllers.
             return globalKeyCommands
-        } else {
-            return nil
-        }
     }
     
     // ...
