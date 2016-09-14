@@ -20,7 +20,7 @@ Add, subtract, multiply, or divide two fractions, then tap a button to put the r
 Instantly find out if a number is prime, and find out all of its factors.
 
 ## Compare numbers
-Type in two numbers and you can compare them, and find their GCD and LCM. (Unfortunately, we have not yet uploaded this feature's code to Github; if you want it, please <a href="mailto:one.studio@outlook.com">email us</a> to request it.)
+Type in two numbers and you can compare them, and find their GCD and LCM. (Unfortunately, we have not yet uploaded this feature's code to Github; if you want it, please <a href="mailto:one.studio@outlook.com">email me</a> to request it.)
 
 # <a href="https://itunes.apple.com/us/app/prime-calc-better-calculator/id1120973834">Download Prime Calc.</a>
 
